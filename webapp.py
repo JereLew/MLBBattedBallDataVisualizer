@@ -9,6 +9,7 @@ df = pd.read_excel(DATA_PATH)
 important_columns = ['LAUNCH_ANGLE', 'EXIT_SPEED', 'EXIT_DIRECTION', 'HIT_DISTANCE', 'HIT_SPIN_RATE']
 
 app = dash.Dash(__name__)
+server = app.server
 
 # Define the app layout
 app.layout = html.Div([
@@ -20,7 +21,7 @@ app.layout = html.Div([
         dcc.Dropdown(
             id="x-axis",
             options=[{"label": col.replace('_', ' ').title(), "value": col} for col in important_columns],
-            value="LAUNCH_ANGLE"  # Default X-axis
+            value="LAUNCH_ANGLE"  
         )
     ], style={"width": "45%", "display": "inline-block"}),
 
